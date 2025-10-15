@@ -1,48 +1,55 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Services\LandingPage;
 
-<<<<<<< HEAD
-use App\Services\MainPage\ImageUploader;
-use Illuminate\Http\Request;
-=======
-use Illuminate\Http\Request;
 use App\Models\LandingPageImage;
 use Illuminate\Support\Facades\DB;
-use App\Services\MainPage\ImageUploader;
-use App\Http\Requests\LandingPageImageRequest;
->>>>>>> master
 
-class LandingPageController extends Controller
+class ImageUploader
 {
-    private $imageUploader;
+    public function upload($request) {
+        
+        // DB::beginTransaction();
+        // try {
+        //     $product = LandingPageImage::create([
+        //         'url' => $request->url
+        //     ]);
 
-    public function __construct(ImageUploader $imageUploader)
-    {
-        $this->imageUploader = $imageUploader;
-    }
+        //     // add main image (single file collection)
+        //     if ($request->hasFile('main_image')) {
+        //         $product->addMedia($request->file('main_image'))
+        //                 ->usingName('Main Image')
+        //                 ->withCustomProperties(['slot' => 'main_image'])
+        //                 ->toMediaCollection('main_image');
+        //     }
 
+        //     // add side images to single collection, with slot custom property
+        //     for ($i = 1; $i <= 10; $i++) {
+        //         $inputName = "image{$i}";
+        //         if ($request->hasFile($inputName)) {
+        //             $product->addMedia($request->file($inputName))
+        //                     ->usingName("Image {$i}")
+        //                     ->withCustomProperties(['slot' => $inputName])
+        //                     ->toMediaCollection('side_images');
+        //         }
+        //     }
 
-    // index page
-    public function index()
-    {
-        return view('pages.home.landing');
-    }
+        //     DB::commit();
+        //     return redirect()->back()->with('success', 'Product created and images uploaded.');
+        // } catch (\Throwable $e) {
+        //     DB::rollBack();
+        //     report($e);
+        //     return back()->withErrors('Upload failed: ' . $e->getMessage());
+        // }
 
-    public function uploadImage(Request $request)
-    {
-<<<<<<< HEAD
-        return $this->imageUploader->upload($request);
-=======
-        // $request->validated();
-        // dd($request);
-        // return $this->imageUploader->upload($request);
         DB::beginTransaction();
         try {
+            // Create or reuse record (adjust based on your logic)
             $product = LandingPageImage::firstOrCreate([
                 'url' => $request->url
             ]);
 
+            // 🟢 Handle main image (replace if new one is uploaded)
             if ($request->hasFile('main_image')) {
                 // remove previous main image
                 $product->clearMediaCollection('main_image');
@@ -53,6 +60,7 @@ class LandingPageController extends Controller
                         ->toMediaCollection('main_image');
             }
 
+            // 🟢 Handle side images (replace only specific slots)
             for ($i = 1; $i <= 10; $i++) {
                 $inputName = "image{$i}";
 
@@ -83,6 +91,7 @@ class LandingPageController extends Controller
             report($e);
             return back()->withErrors('Upload failed: ' . $e->getMessage());
         }
->>>>>>> master
+
+
     }
 }
