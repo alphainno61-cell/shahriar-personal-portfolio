@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 use App\Services\LandingPage\ImageUploader;
 use Illuminate\Http\Request;
-use App\Models\LandingPageImage;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\LandingPageImageRequest;
 
 class LandingPageController extends Controller
 {
