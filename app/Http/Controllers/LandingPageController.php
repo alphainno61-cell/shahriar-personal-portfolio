@@ -1,17 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-<<<<<<< HEAD
 use App\Services\MainPage\ImageUploader;
-use Illuminate\Http\Request;
-=======
 use Illuminate\Http\Request;
 use App\Models\LandingPageImage;
 use Illuminate\Support\Facades\DB;
-use App\Services\MainPage\ImageUploader;
 use App\Http\Requests\LandingPageImageRequest;
->>>>>>> master
 
 class LandingPageController extends Controller
 {
@@ -31,9 +25,7 @@ class LandingPageController extends Controller
 
     public function uploadImage(Request $request)
     {
-<<<<<<< HEAD
         return $this->imageUploader->upload($request);
-=======
         // $request->validated();
         // dd($request);
         // return $this->imageUploader->upload($request);
@@ -83,6 +75,5 @@ class LandingPageController extends Controller
             report($e);
             return back()->withErrors('Upload failed: ' . $e->getMessage());
         }
->>>>>>> master
     }
 }

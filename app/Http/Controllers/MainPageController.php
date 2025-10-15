@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use Illuminate\Http\Request;
-=======
 use App\Models\MainPage;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\MainPageRequest;
->>>>>>> master
 
 class MainPageController extends Controller
 {
@@ -18,11 +14,8 @@ class MainPageController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         return view('pages.home.landing');
-=======
         return view('pages.home.main-page');
->>>>>>> master
     }
 
     /**
@@ -36,11 +29,6 @@ class MainPageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-<<<<<<< HEAD
-    public function store(Request $request)
-    {
-        //
-=======
     public function store(MainPageRequest $request)
     {
         $data = $request->validated();
@@ -63,7 +51,6 @@ class MainPageController extends Controller
         Cache::forget('main-page-data');
     
         return redirect()->back()->with('success', 'Main page information saved successfully!');
->>>>>>> master
     }
 
     /**

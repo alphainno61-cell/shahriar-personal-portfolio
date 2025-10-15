@@ -35,11 +35,7 @@
             </a>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
-            <a href="#" class="nav-link">
-=======
             <a href="{{ route('main.page.index') }}" class="nav-link">
->>>>>>> master
               <i class="nav-icon bi bi-circle"></i>
               <p>Main Page</p>
             </a>
