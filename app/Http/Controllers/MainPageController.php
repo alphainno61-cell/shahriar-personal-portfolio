@@ -14,7 +14,6 @@ class MainPageController extends Controller
      */
     public function index()
     {
-        return view('pages.home.landing');
         return view('pages.home.main-page');
     }
 

@@ -24,11 +24,7 @@ class MainPage extends Model implements HasMedia
 
     public function registerMediaConversions(?Media $media = null): void
     {
-<<<<<<< HEAD
-        $this->addMediaConversion('main-page-medium')
-=======
         $this->addMediaConversion('banner_image')
->>>>>>> master
              ->width(800)
              ->height(600)
              ->sharpen(10);
