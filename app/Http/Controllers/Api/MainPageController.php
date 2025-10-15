@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 class MainPageController extends Controller
 {
     public function index() {
-        $data = Cache::remember('main-page-latest', 3600, function () {
+        $data = Cache::remember('main-page-data', 3600, function () {
             $latest = MainPage::latest()->first();
             if (!$latest) return null;
         
