@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\DB;
 class ImageUploader
 {
     public function upload($request) {
-        
         $request->validate([
             'url' => 'required|string|max:255',
         ]);
 
         DB::beginTransaction();
         try {
-            $product = LandingPageImage::firstOrCreate([
-                'url' => $request->url
-            ]);
+            $product = LandingPageImage::updateOrCreate(
+                ['id' => 1],           
+                ['url' => $request->url]   
+            );
 
             if ($request->hasFile('main_image')) {
                 // remove previous main image
@@ -52,14 +52,12 @@ class ImageUploader
             }
 
             DB::commit();
-            return redirect()->back()->with('success', 'Images updated successfully.');
+            return redirect()->back()->with('success', 'Images (and/or) URL updated successfully.');
 
         } catch (\Throwable $e) {
             DB::rollBack();
             report($e);
             return back()->withErrors('Upload failed: ' . $e->getMessage());
         }
-
-
     }
 }
