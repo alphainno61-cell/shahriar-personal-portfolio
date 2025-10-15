@@ -25,10 +25,10 @@ class LandingPageController extends Controller
 
     public function uploadImage(Request $request)
     {
-        return $this->imageUploader->upload($request);
-        // $request->validated();
-        // dd($request);
-        // return $this->imageUploader->upload($request);
+        $request->validate([
+            'url' => 'required|string|max:255',
+        ]);
+        
         DB::beginTransaction();
         try {
             $product = LandingPageImage::firstOrCreate([
