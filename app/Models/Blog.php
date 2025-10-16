@@ -31,8 +31,4 @@ class Blog extends Model implements HasMedia
         $this->addMediaCollection('blog_cover_image')
              ->singleFile();
     }
-
-    public function authorName() {
-        return User::where('id', Auth::user()->id)->get(['name']);
-    }
 }

@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\EventActivityController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -23,7 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/home/main-page', [MainPageController::class, 'store'])->name('main.page.index');
 
     // blogs
-    Route::resource('blogs', BlogController::class);
+    Route::resource('/blogs', BlogController::class);
+
+    // event
+    Route::resource('/events', EventController::class);
+
+    // event activities
+    Route::resource('/event-activities', EventActivityController::class);
+    Route::delete('/event-activities/remove-image/{media}', [EventActivityController::class, 'removeImage'])
+    ->name('event-activities.remove-image');
 
     // social links
     Route::get('/social-links', [SocialLinkController::class, 'index'])->name('social-links');

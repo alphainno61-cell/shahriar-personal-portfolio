@@ -133,15 +133,15 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('events.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Landing Page</p>
+              <p>All Events</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('events.create') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Main Page</p>
+              <p>Create Event</p>
             </a>
           </li>
         </ul>
