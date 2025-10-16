@@ -159,15 +159,15 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('blogs.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Landing Page</p>
+              <p>All Blogs</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('blogs.create') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Main Page</p>
+              <p>Create Blog</p>
             </a>
           </li>
         </ul>
@@ -277,6 +277,15 @@
         </ul>
       </li>
       <!--end::Life Events-->
+
+      <!--begin::Social Media-->
+      <li class="nav-item">
+        <a href="{{ route('social-links') }}" class="nav-link">
+          <i class="nav-icon bi bi-phone"></i>
+          <p>Social Media</p>
+        </a>
+      </li>
+      <!--end::Social Media-->
 
       <!--begin::Contacts-->
       <li class="nav-item">

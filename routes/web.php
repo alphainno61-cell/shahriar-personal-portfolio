@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\LandingPageController;
-
 
 Route::get('/', function () {
     return view('dashboard');
@@ -21,6 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/home/main-page', [MainPageController::class, 'index'])->name('main.page.index');
     Route::post('/home/main-page', [MainPageController::class, 'store'])->name('main.page.index');
 
+    // blogs
+    Route::resource('blogs', BlogController::class);
+
+    // social links
+    Route::get('/social-links', [SocialLinkController::class, 'index'])->name('social-links');
+    Route::post('/social-links', [SocialLinkController::class, 'store'])->name('social-links');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
