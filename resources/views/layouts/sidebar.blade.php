@@ -107,15 +107,21 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('book-banners.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Landing Page</p>
+              <p>Books Banner</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('recommended-books.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Main Page</p>
+              <p>Recommended Books</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('publication-summery.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Publication Summery</p>
             </a>
           </li>
         </ul>
@@ -226,8 +232,40 @@
       </li>
       <!--end::Donation-->
 
-      <!--begin::Videos-->
+      <!--begin::entrepreneurship-->
       <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon bi bi-archive"></i>
+          <p>
+            Entrepreneurship
+            <i class="nav-arrow bi bi-chevron-right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{ route('enterpreneurship-banners.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Banner</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Innoovation</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Quote</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!--end::entrepreneurship-->
+
+      <!--begin::Videos-->
+      {{-- <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon bi bi-camera-reels"></i>
           <p>
@@ -249,11 +287,11 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> --}}
       <!--end::Videos-->
 
       <!--begin::Life Events-->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon bi bi-calendar-event"></i>
           <p>
@@ -275,7 +313,7 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> --}}
       <!--end::Life Events-->
 
       <!--begin::Social Media-->
@@ -288,7 +326,7 @@
       <!--end::Social Media-->
 
       <!--begin::Contacts-->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon bi bi-person-lines-fill"></i>
           <p>
@@ -310,7 +348,7 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> --}}
       <!--end::Contacts-->
     </ul>
     <!--end::Sidebar Menu-->
