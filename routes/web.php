@@ -1,18 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Faker\Calculator\Inn;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\BookBannerController;
-use App\Http\Controllers\EntrepreneurshipBannerController;
+use App\Http\Controllers\InnovationController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\EventActivityController;
-use App\Http\Controllers\PublicationSummeryController;
 use App\Http\Controllers\RecommendedBookController;
+use App\Http\Controllers\PublicationSummeryController;
+use App\Http\Controllers\EntrepreneurshipBannerController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -51,6 +54,14 @@ Route::middleware('auth')->group(function () {
 
     // enterpreneurship banner
     Route::resource('/enterpreneurship-banners', EntrepreneurshipBannerController::class);
+
+    // innovation
+    Route::resource('/innovations', InnovationController::class);
+    Route::delete('innovations/remove-image/{media}', [InnovationController::class, 'removeImage']);
+
+    // quotes
+    Route::resource('/quotes', QuoteController::class);
+
 
     // social links
     Route::get('/social-links', [SocialLinkController::class, 'index'])->name('social-links');
