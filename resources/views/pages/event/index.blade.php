@@ -1,116 +1,94 @@
 @extends('layouts.app')
 
-@section('title')
-    Show All events
-@endsection
-
-@push('styles')
-<style>
-    body {
-      background-color: #f9fafb;
-      font-family: "Poppins", sans-serif;
-    }
-
-    .table-container {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    table th {
-      background-color: #f1f3f4;
-      color: #333;
-      font-weight: 600;
-    }
-
-    table td {
-      vertical-align: middle;
-    }
-
-    .table-hover tbody tr:hover {
-      background-color: #f8f9fa;
-      transform: scale(1.01);
-      transition: all 0.2s ease-in-out;
-    }
-
-    .event-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .action-btn {
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      margin: 0 4px;
-      transition: transform 0.2s;
-    }
-
-    .action-btn:hover {
-      transform: scale(1.2);
-    }
-
-    .action-btn i {
-      font-size: 1.1rem;
-    }
-
-    .action-btn.view i { color: #0d6efd; }
-    .action-btn.edit i { color: #ffc107; }
-    .action-btn.delete i { color: #dc3545; }
-
-  </style>
-@endpush
+@section('title', 'Show All Events')
 
 @section('content')
-<div class="">
-    <div class="table-container mt-2">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="fw-bold mb-0">All events</h4>
-        <a href="{{ route('events.create') }}" class="btn btn-primary btn-sm">
-          <i class="bi bi-plus-lg me-2"></i> Add New event
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-primary mb-0">
+            <i class="bi bi-calendar-event-fill me-2"></i>All Events
+        </h3>
+        <a href="{{ route('events.create') }}" class="btn btn-primary rounded-pill px-4 py-2">
+            <i class="bi bi-plus-lg me-2"></i>Add New Event
         </a>
-      </div>
-
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover align-middle">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Content</th>
-              <th>Image</th>
-              <th class="text-center" style="width: 140px;">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            @forelse ($events as $event)
-            <tr>
-                <td>{{ $event->title }}</td>
-                <td>{{ $event->content }}</td>
-                <td><img src="{{ $event->getFirstMediaUrl('event_image') }}" alt="event Image" class="event-img"></td>
-                <td class="text-center">
-                  <a href="{{ route('events.show', $event->id) }}" class="action-btn view" title="View"><i class="bi bi-eye"></i></a>
-                  <a href="{{ route('events.edit', $event->id)}}" class="action-btn edit" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                  <button class="action-btn delete-item-btn btn btn-sm" type="submit" data-delete-route="{{ route('events.destroy', $event->id) }}" title="Delete"><i class="bi bi-trash"></i></button>
-                </td>
-              </tr>
-            @empty
-                <tr rowspan="4">No data found</tr>
-            @endforelse
-            
-          </tbody>
-        </table>
-        <div>
-            {{ $events->links() }}
-        </div>
-      </div>
     </div>
-  </div>
+
+    @if($events->count() > 0)
+        <div class="table-responsive shadow-sm rounded-4">
+            <table class="table align-middle table-hover mb-0">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col" style="width: 60px;">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Content</th>
+                        <th scope="col" class="text-center" style="width: 140px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($events as $index => $event)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+
+                            <td>
+                                @if($event->hasMedia('event_image'))
+                                    <img src="{{ $event->getFirstMediaUrl('event_image') }}"
+                                         alt="{{ $event->title }}"
+                                         class="img-thumbnail shadow-sm"
+                                         style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+                                @else
+                                    <img src="https://via.placeholder.com/80x80?text=No+Image"
+                                         class="img-thumbnail shadow-sm"
+                                         alt="No Image">
+                                @endif
+                            </td>
+
+                            <td class="fw-semibold text-dark">{{ $event->title }}</td>
+
+                            <td class="text-muted text-truncate" style="max-width: 300px;">
+                                {{ $event->content ?? '—' }}
+                            </td>
+
+                            <td class="text-center">
+                                <a href="{{ route('events.show', $event->id) }}" 
+                                   class="btn btn-sm btn-info text-white rounded-pill me-1" title="View">
+                                    <i class="bi bi-eye-fill"></i>
+                                </a>
+
+                                <a href="{{ route('events.edit', $event->id) }}" 
+                                   class="btn btn-sm btn-warning text-white rounded-pill me-1" title="Edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+
+                                <form action="{{ route('events.destroy', $event->id) }}" 
+                                      method="POST" class="d-inline"
+                                      onsubmit="return confirm('Are you sure you want to delete this event?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger rounded-pill" title="Delete">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-4 d-flex justify-content-center">
+            {{ $events->links('pagination::bootstrap-5') }}
+        </div>
+    @else
+        <div class="text-center py-5">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076505.png" width="120" class="mb-3 opacity-75" alt="No Data">
+            <h5 class="text-muted">No Events Found</h5>
+        </div>
+    @endif
+</div>
 @endsection
 
 @push('scripts')
-@include('components.delete-confirmation')
+    @include('components.delete-confirmation')
 @endpush
