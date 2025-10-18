@@ -7,12 +7,22 @@ use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\QuoteController;
 use App\Http\Controllers\Api\MainPageController;
 use App\Http\Controllers\Api\InnovationController;
+use App\Http\Controllers\Api\SocialLinkController;
+use App\Http\Controllers\Api\About\AwardController;
+use App\Http\Controllers\Api\About\StoryController;
 use App\Http\Controllers\Api\BooksBannerController;
 use App\Http\Controllers\Api\LandingPageController;
+use App\Http\Controllers\Api\About\BannerController;
+use App\Http\Controllers\Api\About\ImpactController;
+use App\Http\Controllers\Api\About\TravelController;
+use App\Http\Controllers\Api\About\AssociateController;
+use App\Http\Controllers\Api\About\CorporateController;
+use App\Http\Controllers\Api\Donate\DonationController;
 use App\Http\Controllers\Api\RecommendedBooksController;
 use App\Http\Controllers\Api\PublicationSummeryController;
+use App\Http\Controllers\Api\Donate\DonationBannerController;
+use App\Http\Controllers\Api\Technology\TechnologyController;
 use App\Http\Controllers\Api\EntrepreneurshipBannerController;
-use App\Http\Controllers\Api\SocialLinkController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -54,3 +64,20 @@ Route::get('/quotes', [QuoteController::class, 'index']);
 
 // social media links
 Route::get('/social-links', [SocialLinkController::class, 'index']);
+
+
+
+Route::apiResources([
+    'banners' => BannerController::class,
+    'awards'=>AwardController::class,
+    'stories'=>StoryController::class,
+    'impacts'=>ImpactController::class,  
+    'travels'=>TravelController::class, 
+    'corporates'=>CorporateController::class, 
+    'associates'=>AssociateController::class, 
+    'donations'=>DonationController::class, 
+    'donation-banners'=>DonationBannerController::class,
+    'technology'=>TechnologyController::class,
+
+    
+]);

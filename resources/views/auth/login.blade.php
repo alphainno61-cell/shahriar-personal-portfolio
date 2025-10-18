@@ -48,7 +48,7 @@
     </head>
 
     <body
-        class="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-4">
+        class="flex min-h-screen items-center justify-center bg-black px-4">
 
         <div
             class="animate-fadeInUp w-full max-w-md transform space-y-6 rounded-2xl bg-white p-8 shadow-xl transition-all duration-500 ease-out">
@@ -56,7 +56,7 @@
             <!-- Logo / Title -->
             <div class="animate-fadeIn text-center">
                 <a href="/" class="inline-block">
-                    <img src="{{ asset('assets/img/AdminLTELogo.png') }}" alt="Logo"
+                    <img src="{{ asset('assets/img/shahriar_khan_philosophy.png') }}" alt="Logo"
                         class="mx-auto h-20 w-20 rounded-full shadow-md">
                 </a>
                 <h2 class="mt-4 text-3xl font-bold text-gray-800">Welcome Back</h2>
@@ -132,7 +132,7 @@
                 <!-- Button -->
                 <div>
                     <button type="submit"
-                        class="w-full transform rounded-lg bg-indigo-600 px-4 py-3 font-semibold text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-indigo-700">
+                        class="w-full transform rounded-lg bg-black px-4 py-3 font-semibold text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-indigo-700">
                         Sign In
                     </button>
                 </div>
