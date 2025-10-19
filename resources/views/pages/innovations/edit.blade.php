@@ -1,143 +1,144 @@
 @extends('layouts.app')
 
+@section('title', 'Edit Innovation')
+
 @section('content')
 <div class="pt-2">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-8" style="max-width: 80%;">
+    <div class="d-flex justify-content-center">
+        <div class="card shadow-lg border-0 rounded-4" style="width: 80%;">
 
-            <div class="card shadow-lg border-0 rounded-4 mx-auto">
-                <div class="card-header bg-primary text-white text-center rounded-top-4">
-                    <h4 class="mb-0">Edit Innovation</h4>
-                </div>
-
-                <div class="card-body p-4">
-                    <form action="{{ route('innovations.update', $innovation->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-
-                        <!-- Title -->
-                        <div class="mb-3">
-                            <label for="title" class="form-label fw-semibold">Title</label>
-                            <input 
-                                type="text" 
-                                name="title" 
-                                id="title" 
-                                class="form-control @error('title') is-invalid @enderror" 
-                                value="{{ old('title', $innovation->title) }}" 
-                                placeholder="Enter title">
-                            @error('title')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!-- Content -->
-                        <div class="mb-3">
-                            <label for="content" class="form-label fw-semibold">Content</label>
-                            <textarea 
-                                name="content" 
-                                id="content" 
-                                class="form-control @error('content') is-invalid @enderror" 
-                                rows="5" 
-                                placeholder="Enter content">{{ old('content', $innovation->content) }}</textarea>
-                            @error('content')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!-- Current Images -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Current Images</label>
-                            <div class="d-flex flex-wrap gap-2">
-                                @foreach($innovation->getMedia('innovation_images') as $image)
-                                    <div class="position-relative">
-                                        <img src="{{ $image->getFullUrl() }}" 
-                                             class="img-thumbnail rounded" 
-                                             style="height:120px; object-fit:cover;">
-                                        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 remove-existing-image" data-id="{{ $image->id }}">
-                                            <i class="bi bi-x-lg"></i>
-                                        </button>
-                                    </div>
-                                @endforeach
-                                @if($innovation->getMedia('innovation_images')->isEmpty())
-                                    <p class="text-muted fst-italic">No images uploaded</p>
-                                @endif
-                            </div>
-                        </div>
-
-                        <!-- Upload New Images -->
-                        <div class="mb-3">
-                            <label for="images" class="form-label fw-semibold">Upload New Images</label>
-                            <input 
-                                type="file" 
-                                name="images[]" 
-                                id="images" 
-                                class="form-control @error('images') is-invalid @enderror" 
-                                multiple 
-                                accept="image/*">
-                            <small class="text-muted">You can upload multiple images. New images will replace old ones if you choose to remove them.</small>
-                            @error('images')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!-- Preview -->
-                        <div class="mb-3 d-flex flex-wrap" id="preview-container"></div>
-
-                        <!-- Submit -->
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-success btn-lg rounded-3">
-                                <i class="bi bi-save me-1"></i> Update Innovation
-                            </button>
-                        </div>
-                    </form>
-                </div>
+            <!-- Header -->
+            <div class="card-header text-white text-center rounded-top-4"
+                 style="background: linear-gradient(90deg, #6366f1, #8b5cf6);">
+                <h4 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Edit Innovation</h4>
             </div>
 
+            <!-- Body -->
+            <div class="card-body p-4">
+                <form action="{{ route('innovations.update', $innovation->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+
+                    <!-- Title -->
+                    <div class="mb-4">
+                        <label for="title" class="form-label fw-semibold">Title <span class="text-danger">*</span></label>
+                        <input type="text" name="title" id="title"
+                               class="form-control rounded-3 @error('title') is-invalid @enderror"
+                               value="{{ old('title', $innovation->title) }}"
+                               placeholder="Enter title" required>
+                        @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <!-- Content -->
+                    <div class="mb-4">
+                        <label for="content" class="form-label fw-semibold">Content <span class="text-danger">*</span></label>
+                        <textarea name="content" id="content" rows="5"
+                                  class="form-control rounded-3 @error('content') is-invalid @enderror"
+                                  placeholder="Enter content..." required>{{ old('content', $innovation->content) }}</textarea>
+                        @error('content')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <!-- Current Images -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Current Images</label>
+                        <div class="d-flex flex-wrap gap-2">
+                            @forelse($innovation->getMedia('innovation_images') as $image)
+                                <div class="position-relative">
+                                    <img src="{{ $image->getFullUrl() }}" 
+                                         class="img-thumbnail rounded-3 shadow-sm"
+                                         style="height: 130px; width: 180px; object-fit: cover;">
+                                    <button type="button" 
+                                            class="btn btn-sm btn-danger position-absolute top-0 end-0 rounded-circle remove-existing-image" 
+                                            data-id="{{ $image->id }}">
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </div>
+                            @empty
+                                <p class="text-muted fst-italic">No images uploaded yet</p>
+                            @endforelse
+                        </div>
+                    </div>
+
+                    <!-- Upload New Images -->
+                    <div class="mb-4">
+                        <label for="images" class="form-label fw-semibold">Upload New Images</label>
+                        <div class="border border-2 border-dashed rounded-3 p-4 text-center bg-light"
+                             style="cursor: pointer;" onclick="document.getElementById('images').click()">
+                            <input type="file" name="images[]" id="images" 
+                                   class="form-control d-none @error('images') is-invalid @enderror"
+                                   multiple accept="image/*">
+                            <img id="preview-placeholder" src="https://via.placeholder.com/300x180?text=Upload+Preview" 
+                                 alt="Preview" class="img-fluid rounded-3 shadow-sm" style="max-height: 180px;">
+                            <p class="text-muted mt-2 mb-0">Click or drag to upload new images</p>
+                        </div>
+                        @error('images')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <!-- Preview -->
+                    <div id="preview-container" class="d-flex flex-wrap gap-2 mb-4"></div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg rounded-pill">
+                            <i class="bi bi-save me-2"></i>Update Innovation
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 @endsection
 
 @push('scripts')
-{{-- Image Preview Script --}}
 <script>
     const imagesInput = document.getElementById('images');
     const previewContainer = document.getElementById('preview-container');
 
+    // Preview uploaded images
     imagesInput.addEventListener('change', function() {
-        previewContainer.innerHTML = ''; // Clear previous previews
+        previewContainer.innerHTML = '';
         Array.from(this.files).forEach(file => {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = e => {
                 const img = document.createElement('img');
                 img.src = e.target.result;
-                img.classList.add('img-thumbnail', 'me-2', 'mb-2');
-                img.style.maxHeight = '150px';
+                img.classList.add('img-thumbnail', 'rounded-3', 'shadow-sm');
+                img.style.height = '130px';
+                img.style.width = '180px';
+                img.style.objectFit = 'cover';
                 previewContainer.appendChild(img);
-            }
+            };
             reader.readAsDataURL(file);
         });
     });
 
-    // Optional: handle remove existing image button (AJAX delete)
-    document.querySelectorAll('.remove-existing-image').forEach(button => {
-        button.addEventListener('click', function() {
-            const imageId = this.dataset.id;
-            if(confirm('Are you sure you want to remove this image?')) {
-                fetch(`/innovations/remove-image/${imageId}`, {
+    // AJAX delete existing image
+    document.querySelectorAll('.remove-existing-image').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.dataset.id;
+            if (confirm('Remove this image?')) {
+                fetch(`/innovations/remove-image/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}',
                         'Accept': 'application/json'
                     }
-                }).then(res => res.json())
-                  .then(data => {
-                      if(data.success){
-                          this.parentElement.remove();
-                      } else {
-                          alert('Failed to remove image.');
-                      }
-                  });
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        this.closest('div.position-relative').remove();
+                    } else {
+                        alert('Failed to delete image.');
+                    }
+                });
             }
         });
     });
