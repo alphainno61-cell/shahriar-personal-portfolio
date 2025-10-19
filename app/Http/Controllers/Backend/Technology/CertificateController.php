@@ -24,7 +24,7 @@ class CertificateController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:5048',
             'description' => 'nullable|string',
             'is_active' => 'nullable|boolean',
         ]);

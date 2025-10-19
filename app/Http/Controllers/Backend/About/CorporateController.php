@@ -26,7 +26,7 @@ class CorporateController extends Controller
             'title' => 'required|string|max:255',
             'company_name' => 'nullable|string|max:255',
             'position_years' => 'nullable|string|max:255',
-            'image_path' => 'nullable|image|max:2048',
+            'image_path' => 'nullable|image|max:5048',
             'description' => 'nullable|string',
             'order_no' => 'nullable|integer',
             'is_active' => 'nullable|boolean',

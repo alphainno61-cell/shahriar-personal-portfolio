@@ -36,7 +36,7 @@ class DonationBannerController extends Controller
         $request->validate([
             'section_title' => 'nullable|string|max:255',
             'main_quote' => 'required|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
             'button_text' => 'nullable|string|max:100',
             'button_link' => 'nullable|string|max:255',
             'is_active' => 'nullable|boolean',
@@ -68,7 +68,7 @@ class DonationBannerController extends Controller
         $request->validate([
             'section_title' => 'nullable|string|max:255',
             'main_quote' => 'required|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
             'button_text' => 'nullable|string|max:100',
             'button_link' => 'nullable|string|max:255',
             'is_active' => 'nullable|boolean',

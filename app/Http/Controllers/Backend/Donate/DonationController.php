@@ -39,7 +39,7 @@ class DonationController extends Controller
             'donation_link' => 'nullable|string|max:255',
             'order_no' => 'nullable|integer',
             'is_active' => 'boolean',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
         ]);
 
         $data = $request->only([
@@ -95,7 +95,7 @@ class DonationController extends Controller
             'donation_link' => 'nullable|string|max:255',
             'order_no' => 'nullable|integer',
             'is_active' => 'boolean',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
         ]);
 
         $data = $request->only([

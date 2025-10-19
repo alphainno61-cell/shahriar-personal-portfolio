@@ -35,7 +35,7 @@ class EventController extends Controller
             'content'      => 'required|string',
             'event_date'   => 'required|date',
             'event_place'  => 'required|string|max:255',
-            'image'        => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image'        => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
         ]);
 
         // ✅ Create Event

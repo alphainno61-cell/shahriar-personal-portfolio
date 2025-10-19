@@ -34,7 +34,7 @@ class AwardController extends Controller
             'title'        => 'required|string|max:255',
             'time_period'  => 'required|string|max:100',
             'description'  => 'nullable|string',
-            'image'        => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image'        => 'nullable|image|mimes:jpg,jpeg,png|max:5048',
             'is_active'    => 'boolean',
         ]);
 

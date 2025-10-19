@@ -35,7 +35,7 @@ class EventActivityController extends Controller
         $validated = $request->validate([
             'title'       => 'required|string|max:255',
             'description' => 'nullable|string',
-            'images.*'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'images.*'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
         ]);
 
         // ✅ Create the activity

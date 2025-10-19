@@ -53,7 +53,7 @@ class DonationController extends Controller
             'button_text' => 'nullable|string|max:100',
             'order_no' => 'required|integer',
             'is_active' => 'required|boolean',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
         ]);
 
         if ($validator->fails()) {

@@ -27,8 +27,8 @@ class TechnologyController extends Controller
         $request->validate([
             'title'=>'required|string|max:255',
             'description'=>'nullable|string',
-            'image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'frame_image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
+            'frame_image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
             'tools_title'=>'nullable|string|max:255',
             'tools_description'=>'nullable|string',
             'is_active'=>'nullable|boolean',
@@ -54,8 +54,8 @@ class TechnologyController extends Controller
         $request->validate([
             'title'=>'required|string|max:255',
             'description'=>'nullable|string',
-            'image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'frame_image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
+            'frame_image'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
             'tools_title'=>'nullable|string|max:255',
             'tools_description'=>'nullable|string',
             'is_active'=>'nullable|boolean',
@@ -96,7 +96,7 @@ class TechnologyController extends Controller
     public function storeSkill(Request $request, $fieldId)
     {
         $request->validate([
-            'icon'=>'required|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
+            'icon'=>'required|image|mimes:jpg,jpeg,png,svg,webp|max:5048',
             'name'=>'nullable|string|max:255',
             'order_no'=>'nullable|integer',
         ]);

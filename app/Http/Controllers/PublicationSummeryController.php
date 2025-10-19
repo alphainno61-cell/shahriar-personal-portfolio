@@ -32,7 +32,7 @@ class PublicationSummeryController extends Controller
         // ✅ Validate input
         $validated = $request->validate([
             'content' => 'required|string',
-            'image'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'image'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5096',
         ]);
 
         // ✅ Create summary record

@@ -32,7 +32,7 @@ class BannerController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5048',
             'video_url' => 'nullable|url|max:255',
             'is_active' => 'boolean'
         ]);

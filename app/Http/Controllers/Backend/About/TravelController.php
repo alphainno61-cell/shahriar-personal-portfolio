@@ -23,8 +23,8 @@ class TravelController extends Controller
     {
         $data = $request->validate([
             'country_name' => 'required|string|max:255',
-            'country_flag_path' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048',
-            'map_image_path' => 'nullable|image|mimes:png,jpg,jpeg|max:4096',
+            'country_flag_path' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:5048',
+            'map_image_path' => 'nullable|image|mimes:png,jpg,jpeg|max:5096',
             'order_no' => 'nullable|integer',
             'is_active' => 'nullable|boolean',
         ]);
@@ -57,8 +57,8 @@ class TravelController extends Controller
     {
         $data = $request->validate([
             'country_name' => 'required|string|max:255',
-            'country_flag_path' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048',
-            'map_image_path' => 'nullable|image|mimes:png,jpg,jpeg|max:4096',
+            'country_flag_path' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:5048',
+            'map_image_path' => 'nullable|image|mimes:png,jpg,jpeg|max:5096',
             'order_no' => 'nullable|integer',
             'is_active' => 'nullable|boolean',
         ]);

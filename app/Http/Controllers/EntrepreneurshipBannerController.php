@@ -32,7 +32,7 @@ class EntrepreneurshipBannerController extends Controller
         // ✅ Validate input
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:4096',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5096',
         ]);
 
         // ✅ Create the banner record

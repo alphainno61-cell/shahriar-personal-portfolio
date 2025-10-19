@@ -26,7 +26,7 @@ class StoryController extends Controller
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:5048',
             'order_no' => 'nullable|integer',
             'is_active' => 'nullable|boolean',
         ]);
@@ -58,7 +58,7 @@ class StoryController extends Controller
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:5048',
             'order_no' => 'nullable|integer',
             'is_active' => 'nullable|boolean',
         ]);

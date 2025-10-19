@@ -28,8 +28,8 @@ class CyberController extends Controller
             'subtitle' => 'nullable|string|max:255',
             'short_description' => 'nullable|string',
             'long_description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'frame_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
+            'frame_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
             'is_active' => 'nullable|boolean',
         ]);
 
@@ -62,8 +62,8 @@ class CyberController extends Controller
             'subtitle' => 'nullable|string|max:255',
             'short_description' => 'nullable|string',
             'long_description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'frame_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
+            'frame_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
             'is_active' => 'nullable|boolean',
         ]);
 

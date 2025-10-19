@@ -33,7 +33,7 @@ class RecommendedBookController extends Controller
         // ✅ Validate the request
         $validated = $request->validate([
             'images'   => 'required',
-            'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:4096',
+            'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:5096',
         ]);
 
         // ✅ Create an empty record (if you want to group uploads in a single entry)
