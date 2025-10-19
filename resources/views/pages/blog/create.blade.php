@@ -1,57 +1,118 @@
 @extends('layouts.app')
 
-@section('title')
-    Create Blog
-@endsection
+@section('title', 'Create Blog')
 
 @push('styles')
 <style>
-    /* Custom styles for a more professional, "admin-like" look */
     body {
-        background-color: #f8f9fa; /* Light gray background */
+        background: #f5f7fa;
+        font-family: 'Poppins', sans-serif;
     }
+
     .card-post-form {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 0.75rem; /* Slightly rounded corners */
+        background: #fff;
         border: none;
+        border-radius: 1rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: all 0.3s ease;
     }
+
+    .card-post-form:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    }
+
     .card-header-custom {
-        background-color: #0d6efd; /* Primary blue header */
-        color: white;
-        border-radius: 0.75rem 0.75rem 0 0;
-        padding: 1.5rem 1.5rem;
+        background: linear-gradient(135deg, #0d6efd, #6610f2);
+        color: #fff;
+        padding: 1.8rem 1.5rem;
         font-weight: 600;
+        border-bottom: none;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
+
+    .card-header-custom h3 {
+        font-size: 1.4rem;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+    }
+
     .form-control-custom {
-        border-radius: 0.5rem;
-        padding: 0.75rem 1rem;
+        border-radius: 0.6rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid #dee2e6;
+        transition: all 0.25s ease;
+        background-color: #fdfdfd;
     }
-    .btn-primary-custom {
-        background-color: #198754; /* Success green button for "Publish" */
-        border-color: #198754;
-        padding: 0.75rem 2rem;
-        font-weight: 600;
-        border-radius: 0.5rem;
+
+    .form-control-custom:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
     }
-    .btn-primary-custom:hover {
-        background-color: #157347;
-        border-color: #157347;
+
+    textarea.form-control-custom {
+        resize: vertical;
+        min-height: 200px;
     }
+
     .file-input-wrapper {
-        border: 1px solid #ced4da;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        background-color: #fff;
+        border: 2px dashed #cfd8dc;
+        border-radius: 0.6rem;
+        background: #fafafa;
+        padding: 1.2rem;
+        transition: all 0.25s ease;
+    }
+
+    .file-input-wrapper:hover {
+        background: #f1f3f5;
+        border-color: #0d6efd;
+    }
+
+    .btn-primary-custom {
+        background: linear-gradient(135deg, #198754, #20c997);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        padding: 0.9rem 2rem;
+        border-radius: 0.6rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+        background: linear-gradient(135deg, #157347, #0d6efd);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+    }
+
+    .btn-primary-custom i {
+        vertical-align: middle;
+    }
+
+    .helper-text {
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .card-header-custom h3 {
+            font-size: 1.2rem;
+        }
     }
 </style>
 @endpush
 
 @section('content')
-<div class="mt-2">
-    <div class="row width-100">
-        <div class="col-lg-10 col-xl-8 mx-auto">
+<div class="mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
             <div class="card card-post-form">
-                
+
                 <div class="card-header card-header-custom">
                     <h3 class="mb-0">
                         <i class="bi bi-pencil-square me-2"></i> Create New Blog Post
@@ -59,19 +120,19 @@
                 </div>
 
                 <div class="card-body p-4 p-md-5">
-                    
                     <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf 
+                        @csrf
 
+                        <!-- Blog Title -->
                         <div class="mb-4">
-                            <label for="title" class="form-label fw-bold">Post Title</label>
+                            <label for="title" class="form-label">Post Title</label>
                             <input 
                                 type="text" 
-                                class="form-control form-control-lg form-control-custom @error('title') is-invalid @enderror" 
-                                id="title" 
-                                name="title" 
-                                placeholder="Enter a descriptive and catchy title" 
-                                value="{{ old('title') }}" 
+                                id="title"
+                                name="title"
+                                class="form-control form-control-custom @error('title') is-invalid @enderror"
+                                placeholder="Enter a descriptive and catchy title"
+                                value="{{ old('title') }}"
                                 required
                             >
                             @error('title')
@@ -79,14 +140,15 @@
                             @enderror
                         </div>
 
+                        <!-- Blog Content -->
                         <div class="mb-4">
-                            <label for="content" class="form-label fw-bold">Content</label>
+                            <label for="content" class="form-label">Content</label>
                             <textarea 
-                                class="form-control form-control-custom @error('content') is-invalid @enderror" 
                                 id="content" 
                                 name="content" 
-                                rows="15" 
-                                placeholder="Write your full blog post content here..." 
+                                class="form-control form-control-custom @error('content') is-invalid @enderror"
+                                placeholder="Write your full blog content here..."
+                                rows="12"
                                 required
                             >{{ old('content') }}</textarea>
                             @error('content')
@@ -94,32 +156,36 @@
                             @enderror
                         </div>
 
+                        <!-- Blog Image -->
                         <div class="mb-5">
-                            <label for="cover_image" class="form-label fw-bold">Featured Image</label>
-                            <div class="file-input-wrapper">
+                            <label for="cover_image" class="form-label">Featured Image</label>
+                            <div class="file-input-wrapper text-center">
+                                <i class="bi bi-cloud-upload fs-3 text-primary mb-2 d-block"></i>
                                 <input 
-                                    class="form-control @error('cover_image') is-invalid @enderror" 
                                     type="file" 
                                     id="cover_image" 
                                     name="cover_image" 
-                                    accept="image/*" 
-                                    
+                                    class="form-control @error('cover_image') is-invalid @enderror"
+                                    accept="image/*"
                                 >
-                                <small class="text-muted mt-2 d-block">Accepted formats: JPG, PNG. Max size: 2MB.</small>
+                                <small class="helper-text d-block mt-2">
+                                    Accepted formats: JPG, PNG | Max size: 5MB
+                                </small>
                             </div>
                             @error('cover_image')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary-custom btn-lg w-100 w-md-auto">
-                                <i class="bi bi-cloud-upload me-2"></i> Publish Post
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary-custom btn-lg">
+                                <i class="bi bi-cloud-arrow-up me-2"></i> Publish Post
                             </button>
                         </div>
                     </form>
-
                 </div>
+
             </div>
         </div>
     </div>

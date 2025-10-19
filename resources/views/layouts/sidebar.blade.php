@@ -55,23 +55,55 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('banners.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Landing Page</p>
+              <p>Banner </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('awards.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Main Page</p>
+              <p>Awards </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('stories.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Story </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('impacts.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Impacts </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('travels.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Travel </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('corporates.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Corporate </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('associates.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Associate </p>
+            </a>
+          </li>
+         
         </ul>
       </li>
       <!--end::About Me-->
 
+
       <!--begin::Publications-->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon bi bi-feather"></i>
           <p>
@@ -93,7 +125,7 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> --}}
       <!--end::Publications-->
 
       <!--begin::Books-->
@@ -191,20 +223,34 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('banners.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Landing Page</p>
+              <p>Banner</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('certificates.index')}}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Main Page</p>
+              <p>Certificate</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('cybers.index')}}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Cyber Security</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('technology.index') }}" class="nav-link">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Technology</p>
+            </a>
+          </li>
+        
         </ul>
       </li>
       <!--end::Technology-->
+
 
       <!--begin::Donation-->
       <li class="nav-item">
@@ -217,15 +263,15 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('donation-banners.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Landing Page</p>
+              <p>Banner</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('donations.index') }}" class="nav-link">
               <i class="nav-icon bi bi-circle"></i>
-              <p>Main Page</p>
+              <p>Donation</p>
             </a>
           </li>
         </ul>

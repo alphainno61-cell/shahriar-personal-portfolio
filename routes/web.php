@@ -1,7 +1,9 @@
 <?php
 
-use Faker\Calculator\Inn;
+use App\Models\Blog;
 
+use App\Models\Event;
+use App\Models\Donation;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
@@ -15,25 +17,30 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\EventActivityController;
 use App\Http\Controllers\RecommendedBookController;
 use App\Http\Controllers\PublicationSummeryController;
-use App\Http\Controllers\EntrepreneurshipBannerController;
-use App\Http\Controllers\Backend\About\BannerController;
 use App\Http\Controllers\Backend\About\AwardController;
 use App\Http\Controllers\Backend\About\StoryController;
+use App\Http\Controllers\Backend\About\BannerController;
 use App\Http\Controllers\Backend\About\ImpactController;
 use App\Http\Controllers\Backend\About\TravelController;
-use App\Http\Controllers\Backend\About\CorporateController;
+use App\Http\Controllers\EntrepreneurshipBannerController;
 use App\Http\Controllers\Backend\About\AssociateController;
+use App\Http\Controllers\Backend\About\CorporateController;
 use App\Http\Controllers\Backend\Donate\DonationController;
-use App\Http\Controllers\Backend\Donate\DonationBannerController;
-use App\Http\Controllers\Backend\Technology\CertificateController;
 use App\Http\Controllers\Backend\Technology\CyberController;
+use App\Http\Controllers\Backend\Donate\DonationBannerController;
 use App\Http\Controllers\Backend\Technology\TechnologyController;
+use App\Http\Controllers\Backend\Technology\CertificateController;
 
 
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    $totalBlogs = Blog::count();
+    $totalEvents = Event::count();
+    // $totalBooks = Book::count();
+    $totalDonations = Donation::count();
+    
+    return view('dashboard', compact('totalBlogs', 'totalEvents', 'totalDonations'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

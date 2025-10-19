@@ -67,17 +67,28 @@ Route::get('/social-links', [SocialLinkController::class, 'index']);
 
 
 
-Route::apiResources([
-    'banners' => BannerController::class,
-    'awards'=>AwardController::class,
-    'stories'=>StoryController::class,
-    'impacts'=>ImpactController::class,  
-    'travels'=>TravelController::class, 
-    'corporates'=>CorporateController::class, 
-    'associates'=>AssociateController::class, 
-    'donations'=>DonationController::class, 
-    'donation-banners'=>DonationBannerController::class,
-    'technology'=>TechnologyController::class,
+// Route::apiResources([
+//     'banners' => BannerController::class,
+//     'awards'=>AwardController::class,
+//     'stories'=>StoryController::class,
+//     'impacts'=>ImpactController::class,  
+//     'travels'=>TravelController::class, 
+//     'corporates'=>CorporateController::class, 
+//     'associates'=>AssociateController::class, 
+//     'donations'=>DonationController::class, 
+//     'donation-banners'=>DonationBannerController::class,
+//     'technology'=>TechnologyController::class,
 
     
-]);
+// ]);
+
+Route::get('get-banners', [BannerController::class, 'index']);
+Route::get('get-awards', [AwardController::class, 'index']);
+Route::get('get-stories', [StoryController::class, 'index']);
+Route::get('get-impacts', [ImpactController::class, 'index']);
+Route::get('get-travels', [TravelController::class, 'index']);
+Route::get('get-corporates', [CorporateController::class, 'index']);
+Route::get('get-associates', [AssociateController::class, 'index']);
+Route::get('get-donations', [DonationController::class, 'index']);
+Route::get('get-donation-banners', [DonationBannerController::class, 'index']);
+Route::get('get-technologies', [TechnologyController::class, 'index']);

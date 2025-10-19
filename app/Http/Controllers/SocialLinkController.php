@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SocialLinks;
 use App\Services\SocilaMediaLinksService;
 use Illuminate\Http\Request;
 
