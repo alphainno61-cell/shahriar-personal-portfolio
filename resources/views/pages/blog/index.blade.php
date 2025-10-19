@@ -1,201 +1,266 @@
 @extends('layouts.app')
 
-@section('title', 'Show All Blogs')
-
-@push('styles')
-<style>
-    body {
-        background-color: #f5f7fa;
-        font-family: "Poppins", sans-serif;
-    }
-
-    .table-container {
-        background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
-        border-radius: 18px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-        padding: 25px;
-        margin-top: 40px;
-        transition: all 0.3s ease;
-    }
-
-    .table-container:hover {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transform: translateY(-3px);
-    }
-
-    .table thead th {
-        background-color: #0d6efd;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-size: 0.9rem;
-        padding: 14px;
-    }
-
-    .table tbody td {
-        vertical-align: middle;
-        color: #333;
-        font-size: 0.95rem;
-        background-color: #fff;
-        transition: all 0.2s ease;
-    }
-
-    .table tbody tr {
-        border-bottom: 1px solid #eee;
-    }
-
-    .table-hover tbody tr:hover {
-        background-color: #f0f7ff;
-        transform: scale(1.01);
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .blog-img {
-        width: 60px;
-        height: 60px;
-        border-radius: 10px;
-        object-fit: cover;
-        border: 2px solid #e9ecef;
-        transition: 0.3s ease;
-    }
-
-    .blog-img:hover {
-        transform: scale(1.08);
-        border-color: #0d6efd;
-    }
-
-    /* Action buttons */
-    .action-btn {
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        margin: 0 4px;
-        transition: transform 0.2s ease;
-    }
-
-    .action-btn:hover {
-        transform: scale(1.2);
-    }
-
-    .action-btn i {
-        font-size: 1.1rem;
-    }
-
-    .action-btn.view i {
-        color: #0d6efd;
-    }
-
-    .action-btn.edit i {
-        color: #ffc107;
-    }
-
-    .action-btn.delete i {
-        color: #dc3545;
-    }
-
-    /* Header and button styling */
-    .header-title {
-        font-weight: 700;
-        color: #0d6efd;
-    }
-
-    .btn-add {
-        background: linear-gradient(135deg, #0d6efd, #6610f2);
-        border: none;
-        color: #fff;
-        border-radius: 30px;
-        font-weight: 500;
-        padding: 8px 18px;
-        transition: 0.3s ease;
-    }
-
-    .btn-add:hover {
-        background: linear-gradient(135deg, #0b5ed7, #520dc2);
-        transform: scale(1.05);
-    }
-
-    /* Pagination Styling */
-    .pagination {
-        justify-content: center;
-    }
-
-    .pagination .page-link {
-        color: #0d6efd;
-        border-radius: 10px;
-        margin: 0 3px;
-    }
-
-    .pagination .active .page-link {
-        background-color: #0d6efd;
-        border-color: #0d6efd;
-        color: #fff;
-    }
-</style>
-@endpush
+@section('title', 'All Blogs')
 
 @section('content')
-<div class="container">
-    <div class="table-container mt-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="header-title mb-0">
-                <i class="bi bi-journal-text me-2"></i>All Blogs
-            </h4>
-            <a href="{{ route('blogs.create') }}" class="btn btn-add shadow-sm">
-                <i class="bi bi-plus-circle me-2"></i> Add New Blog
-            </a>
-        </div>
+<div class="pt-2">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="title-header" style="font-size: 2rem; font-weight: 700; color: var(--primary-color); position: relative; padding-bottom: 0.5rem;">
+            All Blogs
+            <span class="title-underline"></span>
+        </h2>
+        <a href="{{ route('blogs.create') }}" class="btn btn-primary add-btn rounded-pill px-4 py-2">
+            <i class="bi bi-plus-circle me-1"></i> Add New Blog
+        </a>
+    </div>
 
-        <div class="table-responsive">
-            <table class="table table-hover align-middle text-center">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Image</th>
-                        <th style="width: 140px;">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($blogs as $blog)
-                    <tr>
-                        <td>{{ $blog->title }}</td>
-                        <td class="text-truncate" style="max-width: 250px;">{{ Str::limit($blog->content, 20) }}</td>
-                        <td>
-                            <img src="{{ $blog->getFirstMediaUrl('blog_cover_image') }}" 
-                                 alt="Blog Image" class="blog-img">
-                        </td>
-                        <td>
-                            <a href="{{ route('blogs.show', $blog->id) }}" 
-                               class="action-btn view" title="View">
-                               <i class="bi bi-eye-fill"></i>
-                            </a>
-                            <a href="{{ route('blogs.edit', $blog->id) }}" 
-                               class="action-btn edit" title="Edit">
-                               <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <button class="action-btn delete-item-btn btn btn-sm" 
-                                    type="submit" 
-                                    data-delete-route="{{ route('blogs.destroy', $blog->id) }}" 
-                                    title="Delete">
-                                <i class="bi bi-trash-fill"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="4" class="text-muted py-4">No data found</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
-            <div class="mt-3">
+    <div class="card border-0 shadow-sm rounded-3" style="background: var(--card-background);">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table align-middle table-hover mb-0">
+                    <thead style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #ffffff; border: 2px solid var(--primary-color);">
+                        <tr>
+                            <th class="text-center py-3" style="font-size: 0.875rem; font-weight: 600;">Title</th>
+                            <th class="text-center py-3" style="font-size: 0.875rem; font-weight: 600;">Content</th>
+                            <th class="text-center py-3" style="font-size: 0.875rem; font-weight: 600;">Image</th>
+                            <th class="text-center py-3" style="font-size: 0.875rem; font-weight: 600; width: 140px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($blogs as $blog)
+                        <tr class="text-center" style="transition: background 0.2s ease;">
+                            <td class="fw-semibold" style="font-size: 0.875rem; color: var(--text-primary);">{{ $blog->title }}</td>
+                            <td class="text-truncate" style="font-size: 0.875rem; color: var(--text-secondary); max-width: 250px;">{{ Str::limit($blog->content, 20) }}</td>
+                            <td>
+                                @if($blog->getFirstMediaUrl('blog_cover_image'))
+                                    <img src="{{ $blog->getFirstMediaUrl('blog_cover_image') }}" 
+                                         alt="Blog Image" 
+                                         class="img-thumbnail rounded shadow-sm" 
+                                         style="width: 60px; height: 60px; border: none; transition: transform 0.2s ease;">
+                                @else
+                                    <span class="text-muted fst-italic" style="font-size: 0.75rem;">No Image</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="{{ route('blogs.show', $blog->id) }}" 
+                                       class="btn btn-sm action-btn" 
+                                       style="background: var(--success-color); color: #ffffff;" 
+                                       data-bs-toggle="tooltip" 
+                                       title="View">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="{{ route('blogs.edit', $blog->id) }}" 
+                                       class="btn btn-sm action-btn" 
+                                       style="background: var(--primary-color); color: #ffffff;" 
+                                       data-bs-toggle="tooltip" 
+                                       title="Edit">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <form action="{{ route('blogs.destroy', $blog->id) }}" 
+                                          method="POST" 
+                                          onsubmit="return confirm('Are you sure you want to delete this blog?');" 
+                                          class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm action-btn" 
+                                                style="background: var(--danger-color); color: #ffffff;" 
+                                                data-bs-toggle="tooltip" 
+                                                title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4" style="font-size: 0.875rem; color: var(--text-secondary);">
+                                <i class="bi bi-image-alt fs-3 d-block mb-2"></i>
+                                No blogs found.
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3 d-flex justify-content-center">
                 {{ $blogs->links() }}
             </div>
         </div>
     </div>
 </div>
-@endsection
+
+@push('styles')
+    <style>
+        :root {
+            --primary-color: #2563eb; /* Vibrant blue for primary elements */
+            --secondary-color: #7c3aed; /* Purple for accents */
+            --success-color: #059669; /* Green for success states */
+            --danger-color: #dc2626; /* Red for danger states */
+            --card-background: #ffffff; /* White card background */
+            --text-primary: #111827; /* Dark gray for primary text */
+            --text-secondary: #6b7280; /* Muted gray for secondary text */
+            --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 8px 16px rgba(37, 99, 235, 0.15);
+        }
+
+        .title-header {
+            position: relative;
+        }
+
+        .title-underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .title-header:hover .title-underline {
+            width: 100px;
+        }
+
+        .add-btn {
+            background: var(--primary-color);
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .add-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .add-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f8f9fa !important;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        .table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .table th, .table td {
+            border: none;
+            padding: 1rem;
+        }
+
+        .table th {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table-responsive {
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .img-thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .pagination .page-link {
+            color: var(--primary-color);
+            border-radius: 10px;
+            margin: 0 3px;
+        }
+
+        .pagination .active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        @media (max-width: 767.98px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .title-header {
+                font-size: 1.5rem;
+            }
+
+            .add-btn {
+                font-size: 0.75rem;
+                padding: 0.5rem 1.5rem;
+            }
+
+            .table th, .table td {
+                padding: 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            .action-btn {
+                width: 32px;
+                height: 32px;
+            }
+
+            .badge {
+                font-size: 0.625rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .img-thumbnail {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+@endpush
 
 @push('scripts')
-@include('components.delete-confirmation')
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
+    </script>
+    @include('components.delete-confirmation')
 @endpush
+@endsection

@@ -73,18 +73,18 @@
       <!--begin::Sidebar-->
       <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
         <!--begin::Sidebar Brand-->
-        <div class="sidebar-brand">
+        <div class="sidebar-brand bg-white" style="color: #475569">
           <!--begin::Brand Link-->
           <ahref="{{ asset('/') }}index.html" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="{{ asset('/') }}assets/img/AdminLTELogo.png"
-              alt="AdminLTE Logo"
-              class="brand-image opacity-75 shadow"
+                src="{{ asset('/') }}assets/img/shahriar_khan_philosophy.png"
+                alt="AdminLTE Logo"
+                class="brand-image rounded-circle opacity-75 shadow"
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">Shahriar</span>
+            <span class="brand-text fw-light" style="color: #475569">Shahriar</span>
             <!--end::Brand Text-->
           </ahref=>
           <!--end::Brand Link-->
@@ -96,7 +96,7 @@
       </aside>
       <!--end::Sidebar-->
       <!--begin::App Main-->
-      <main class="app-main">
+      <main class="app-main" style="background-color: #f2eded">
         <!--begin::App Content-->
         <div class="app-content">
      

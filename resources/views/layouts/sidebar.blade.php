@@ -1,4 +1,4 @@
-<div class="sidebar-wrapper">
+<div class="sidebar-wrapper bg-white">
   <nav class="mt-2">
     <!--begin::Sidebar Menu-->
     <ul
@@ -11,7 +11,7 @@
     >
       <!--begin::Dashboard-->
       <li class="nav-item">
-        <a href="{{ route('dashboard') }}" class="nav-link">
+        <a href="{{ route('dashboard') }}" class="nav-link" style="color: #475569" style="color: #475569">
           <i class="nav-icon bi bi-palette"></i>
           <p>Dashboard</p>
         </a>
@@ -20,7 +20,7 @@
 
       <!--begin::Home-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-house"></i>
           <p>
             Home
@@ -29,13 +29,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('home.landing') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Landing Page</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('main.page.index') }}" class="nav-link">
+            <a href="{{ route('main.page.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Main Page</p>
             </a>
@@ -46,7 +46,7 @@
 
       <!--begin::About Me-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-file-earmark-person"></i>
           <p>
             About Me
@@ -55,43 +55,43 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('banners.index') }}" class="nav-link">
+            <a href="{{ route('banners.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Banner </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('awards.index') }}" class="nav-link">
+            <a href="{{ route('awards.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Awards </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('stories.index') }}" class="nav-link">
+            <a href="{{ route('stories.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Story </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('impacts.index') }}" class="nav-link">
+            <a href="{{ route('impacts.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Impacts </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('travels.index') }}" class="nav-link">
+            <a href="{{ route('travels.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Travel </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('corporates.index') }}" class="nav-link">
+            <a href="{{ route('corporates.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Corporate </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('associates.index') }}" class="nav-link">
+            <a href="{{ route('associates.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Associate </p>
             </a>
@@ -104,7 +104,7 @@
 
       <!--begin::Publications-->
       {{-- <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-feather"></i>
           <p>
             Publications
@@ -113,13 +113,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('home.landing') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Landing Page</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Main Page</p>
             </a>
@@ -130,7 +130,7 @@
 
       <!--begin::Books-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-book"></i>
           <p>
             Books
@@ -139,19 +139,19 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('book-banners.index') }}" class="nav-link">
+            <a href="{{ route('book-banners.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Books Banner</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('recommended-books.index') }}" class="nav-link">
+            <a href="{{ route('recommended-books.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Recommended Books</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('publication-summery.index') }}" class="nav-link">
+            <a href="{{ route('publication-summery.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Publication Summery</p>
             </a>
@@ -162,7 +162,7 @@
 
       <!--begin::Events-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-calendar-event"></i>
           <p>
             Events
@@ -171,13 +171,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('events.index') }}" class="nav-link">
+            <a href="{{ route('events.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>All Events</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('events.create') }}" class="nav-link">
+            <a href="{{ route('events.create') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Create Event</p>
             </a>
@@ -188,7 +188,7 @@
 
       <!--begin::Blogs-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-substack"></i>
           <p>
             Blogs
@@ -197,13 +197,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('blogs.index') }}" class="nav-link">
+            <a href="{{ route('blogs.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>All Blogs</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('blogs.create') }}" class="nav-link">
+            <a href="{{ route('blogs.create') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Create Blog</p>
             </a>
@@ -214,7 +214,7 @@
 
       <!--begin::Technology-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-cpu"></i>
           <p>
             Technology
@@ -223,25 +223,25 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('banners.index') }}" class="nav-link">
+            <a href="{{ route('banners.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Banner</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('certificates.index')}}" class="nav-link">
+            <a href="{{route('certificates.index')}}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Certificate</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('cybers.index')}}" class="nav-link">
+            <a href="{{route('cybers.index')}}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Cyber Security</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('technology.index') }}" class="nav-link">
+            <a href="{{ route('technology.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Technology</p>
             </a>
@@ -254,7 +254,7 @@
 
       <!--begin::Donation-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-archive"></i>
           <p>
             Donation
@@ -263,13 +263,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('donation-banners.index') }}" class="nav-link">
+            <a href="{{ route('donation-banners.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Banner</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('donations.index') }}" class="nav-link">
+            <a href="{{ route('donations.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Donation</p>
             </a>
@@ -280,7 +280,7 @@
 
       <!--begin::entrepreneurship-->
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-archive"></i>
           <p>
             Entrepreneurship
@@ -289,19 +289,19 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('enterpreneurship-banners.index') }}" class="nav-link">
+            <a href="{{ route('enterpreneurship-banners.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Banner</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('innovations.index') }}" class="nav-link">
+            <a href="{{ route('innovations.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Innoovation</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('quotes.index') }}" class="nav-link">
+            <a href="{{ route('quotes.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Quote</p>
             </a>
@@ -312,7 +312,7 @@
 
       <!--begin::Videos-->
       {{-- <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-camera-reels"></i>
           <p>
             Videos
@@ -321,13 +321,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('home.landing') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Landing Page</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Main Page</p>
             </a>
@@ -338,7 +338,7 @@
 
       <!--begin::Life Events-->
       {{-- <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-calendar-event"></i>
           <p>
             Life Events
@@ -347,13 +347,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('home.landing') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Landing Page</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Main Page</p>
             </a>
@@ -364,7 +364,7 @@
 
       <!--begin::Social Media-->
       <li class="nav-item">
-        <a href="{{ route('social-links') }}" class="nav-link">
+        <a href="{{ route('social-links') }}" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-phone"></i>
           <p>Social Media</p>
         </a>
@@ -373,7 +373,7 @@
 
       <!--begin::Contacts-->
       {{-- <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link" style="color: #475569">
           <i class="nav-icon bi bi-person-lines-fill"></i>
           <p>
             Contacts
@@ -382,13 +382,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('home.landing') }}" class="nav-link">
+            <a href="{{ route('home.landing') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Landing Page</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Main Page</p>
             </a>
