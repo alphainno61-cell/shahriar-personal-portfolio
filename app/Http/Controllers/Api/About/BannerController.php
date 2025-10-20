@@ -15,13 +15,13 @@ class BannerController extends Controller
      */
     public function index()
     {
-        // $banners = Banner::latest()->get();
+        $banners = Banner::latest()->first();
 
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Banner list retrieved successfully.',
-        //     'data' => $banners
-        // ]);
+        return response()->json([
+            'success' => true,
+            'message' => 'Banner retrieved successfully.',
+            'data' => $banners
+        ]);
     }
 
     /**

@@ -16,13 +16,13 @@ class AwardController extends Controller
      */
     public function index()
     {
-        // $awards = Award::orderBy('id', 'desc')->get();
+        $awards = Award::orderBy('id', 'desc')->get();
 
-        // return response()->json([
-        //     'status' => true,
-        //     'message' => 'Awards fetched successfully.',
-        //     'data' => $awards,
-        // ]);
+        return response()->json([
+            'status' => true,
+            'message' => 'Awards fetched successfully.',
+            'data' => $awards,
+        ]);
     }
 
     /**
