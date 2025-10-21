@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('innovations.index') }}" class="btn btn-secondary btn-lg">Back</a>
+                            <a href="{{ route('travels.index') }}" class="btn btn-secondary btn-lg">Back</a>
                             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
 

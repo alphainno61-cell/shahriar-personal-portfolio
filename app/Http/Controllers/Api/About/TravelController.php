@@ -11,22 +11,34 @@ class TravelController extends Controller
     // List all active travels
     public function index()
     {
-        $travels = Travel::where('is_active', 1)
-            ->orderBy('order_no')
-            ->get()
-            ->map(function($travel) {
+        $travel = Travel::latest()->first();
+
+        if (!$travel) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'No travel found.'
+            ], 404);
+        }
+
+        $data = [
+            'id' => $travel->id,
+            'title' => $travel->title,
+            'content' => $travel->content,
+            'map_image' => $travel->getFirstMediaUrl('map_image') ?: null,
+            'countries' => collect($travel->countries)->map(function ($name, $index) use ($travel) {
+                $flag = $travel->getMedia('country_flags')[$index] ?? null;
                 return [
-                    'id' => $travel->id,
-                    'country_name' => $travel->country_name,
-                    'country_flag' => $travel->country_flag_path ? asset('storage/'.$travel->country_flag_path) : null,
-                    'map_image' => $travel->map_image_path ? asset('storage/'.$travel->map_image_path) : null,
-                    'order_no' => $travel->order_no,
+                    'name' => $name,
+                    'flag' => $flag ? $flag->getUrl() : null,
                 ];
-            });
+            })->toArray(),
+            'created_at' => $travel->created_at->toDateTimeString(),
+            'updated_at' => $travel->updated_at->toDateTimeString(),
+        ];
 
         return response()->json([
             'status' => 'success',
-            'data' => $travels,
+            'data' => $data,
         ]);
     }
 
