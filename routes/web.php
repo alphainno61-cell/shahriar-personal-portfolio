@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\BookBannerController;
 use App\Http\Controllers\InnovationController;
+use App\Http\Controllers\PhilosophyController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ImageGalleryController;
 use App\Http\Controllers\EventActivityController;
 use App\Http\Controllers\RecommendedBookController;
 use App\Http\Controllers\PublicationSummeryController;
@@ -30,9 +33,6 @@ use App\Http\Controllers\Backend\Technology\CyberController;
 use App\Http\Controllers\Backend\Donate\DonationBannerController;
 use App\Http\Controllers\Backend\Technology\TechnologyController;
 use App\Http\Controllers\Backend\Technology\CertificateController;
-
-
-
 
 Route::get('/', function () {
     $totalBlogs = Blog::count();
@@ -84,6 +84,16 @@ Route::middleware('auth')->group(function () {
     // quotes
     Route::resource('/quotes', QuoteController::class);
 
+    // reports
+    Route::resource('/reports', ReportController::class);
+
+    // image gallery
+    Route::resource('/image-galleries', ImageGalleryController::class);
+    Route::delete('/image-galleries/media/{media}', [ImageGalleryController::class, 'destroyImage'])
+    ->name('image-galleries.media.destroy');
+
+    // philosophy
+    Route::resource('/philosophies', PhilosophyController::class);
 
     // social links
     Route::get('/social-links', [SocialLinkController::class, 'index'])->name('social-links');

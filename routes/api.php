@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\SocialLinkController;
 use App\Http\Controllers\Api\About\AwardController;
 use App\Http\Controllers\Api\About\StoryController;
 use App\Http\Controllers\Api\BooksBannerController;
+use App\Http\Controllers\Api\CertificateController;
 use App\Http\Controllers\Api\LandingPageController;
 use App\Http\Controllers\Api\About\BannerController;
 use App\Http\Controllers\Api\About\ImpactController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Api\PublicationSummeryController;
 use App\Http\Controllers\Api\Donate\DonationBannerController;
 use App\Http\Controllers\Api\Technology\TechnologyController;
 use App\Http\Controllers\Api\EntrepreneurshipBannerController;
+use App\Http\Controllers\Api\Technology\CyberController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -92,3 +94,5 @@ Route::get('get-associates', [AssociateController::class, 'index']);
 Route::get('get-donations', [DonationController::class, 'index']);
 Route::get('get-donation-banners', [DonationBannerController::class, 'index']);
 Route::get('get-technologies', [TechnologyController::class, 'index']);
+Route::get('/certificates', [CertificateController::class, 'getCertificates']);
+Route::get('/cyber', [CyberController::class, 'index']);

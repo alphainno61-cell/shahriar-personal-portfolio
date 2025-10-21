@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Api\Technology;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Cyber;
 use Illuminate\Http\Request;
 
-class CyberController extends Controller
+class ImageGallery extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cyber = Cyber::latest()->first();
+        //
+    }
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $cyber
-        ]);
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -33,6 +34,14 @@ class CyberController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         //
     }

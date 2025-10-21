@@ -28,8 +28,8 @@ class CyberController extends Controller
             'subtitle' => 'nullable|string|max:255',
             'short_description' => 'nullable|string',
             'long_description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
-            'frame_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
+            'image' => 'nullable|mimes:jpg,jpeg,png,webp,svg,image/svg+xml|max:5048',
+            'frame_image' => 'nullable|mimes:jpg,jpeg,png,webp,svg,image/svg+xml|max:5048',
             'is_active' => 'nullable|boolean',
         ]);
 
@@ -50,6 +50,7 @@ class CyberController extends Controller
         return redirect()->route('cybers.index')->with('success', 'Cyber Security section added successfully.');
     }
 
+
     public function edit(Cyber $cyber)
     {
         return view('pages.cybers.edit', compact('cyber'));
@@ -62,8 +63,8 @@ class CyberController extends Controller
             'subtitle' => 'nullable|string|max:255',
             'short_description' => 'nullable|string',
             'long_description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
-            'frame_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:5048',
+            'frame_image' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:5048',
             'is_active' => 'nullable|boolean',
         ]);
 

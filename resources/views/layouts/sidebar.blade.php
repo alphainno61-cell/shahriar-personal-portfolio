@@ -79,6 +79,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('reports.index') }}" class="nav-link" style="color: #475569">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Report</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('travels.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Travel </p>
@@ -91,12 +97,23 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('philosophies.index') }}" class="nav-link" style="color: #475569">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Philosophy </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('associates.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Associate </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="{{ route('image-galleries.index') }}" class="nav-link" style="color: #475569">
+              <i class="nav-icon bi bi-circle"></i>
+              <p>Image Gallery </p>
+            </a>
+          </li>
         </ul>
       </li>
       <!--end::About Me-->
@@ -223,7 +240,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('banners.index') }}" class="nav-link" style="color: #475569">
+            <a href="{{ route('technology.index') }}" class="nav-link" style="color: #475569">
               <i class="nav-icon bi bi-circle"></i>
               <p>Banner</p>
             </a>

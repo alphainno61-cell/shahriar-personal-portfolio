@@ -3,19 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 
-class Travel extends Model
+class Travel extends Model implements HasMedia
 {
-    use HasFactory;
-     protected $table = 'travels';
+    use InteractsWithMedia;
 
+    protected $table = 'travel_map';
     protected $fillable = [
-        'country_name',
-        'country_flag_path',
-        'map_image_path',
-        'order_no',
-        'is_active',
+        'title',
+        'content',
+        'countries',
     ];
+
+    protected $casts = [
+        'countries' => 'array',
+    ];
+
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('map_image')->singleFile();
+        $this->addMediaCollection('country_flags');
+    }
 }

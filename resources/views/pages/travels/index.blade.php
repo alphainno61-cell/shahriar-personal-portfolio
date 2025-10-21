@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="pt-2">
@@ -261,4 +261,68 @@
         [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
     </script>
 @endpush
+@endsection --}}
+
+@extends('layouts.app')
+
+@section('title', 'Travel Map List')
+
+@section('content')
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-primary fw-bold">Travel Map List</h3>
+        <a href="{{ route('travels.create') }}" class="btn btn-primary btn-lg">+ Create Travel</a>
+    </div>
+
+    <div class="row">
+        @forelse($travels as $travel)
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm rounded-4 h-100">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ $travel->title }}</h5>
+                    <p class="card-text">{{ $travel->content }}</p>
+
+                    <!-- Map Image -->
+                    @if($travel->getFirstMediaUrl('map_image'))
+                        <div class="mb-3">
+                            <img src="{{ $travel->getFirstMediaUrl('map_image') }}" class="img-fluid rounded shadow-sm" alt="Map Image">
+                        </div>
+                    @endif
+
+                    <!-- Countries -->
+                    @if($travel->countries && count($travel->countries) > 0)
+                        <h6 class="fw-bold">Countries:</h6>
+                        <ul class="list-unstyled">
+                            @foreach($travel->countries as $index => $country)
+                                <li class="d-flex align-items-center mb-2">
+                                    <!-- Flag -->
+                                    @php
+                                        $flag = $travel->getMedia('country_flags')[$index] ?? null;
+                                    @endphp
+                                    @if($flag)
+                                        <img src="{{ $flag->getUrl() }}" alt="Flag" class="me-2 rounded" style="height: 30px; width: auto;">
+                                    @endif
+                                    {{ $country }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+                <div class="card-footer text-end">
+                    <a href="{{ route('travels.edit', $travel->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <button type="submit" data-delete-route="{{ route('travels.destroy', $travel->id) }}" class="delete-item-btn btn btn-sm btn-danger" title="Delete">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        @empty
+            <p class="text-muted">No travel maps found.</p>
+        @endforelse
+    </div>
+</div>
 @endsection
+
+@push('scripts')
+    @include('components.delete-confirmation')
+@endpush
